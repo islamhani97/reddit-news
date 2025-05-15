@@ -1,4 +1,4 @@
-package com.islam97.android.apps.redditnews.ui.theme
+package com.islam97.android.apps.redditnews.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
