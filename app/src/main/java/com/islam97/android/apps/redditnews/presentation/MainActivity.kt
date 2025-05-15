@@ -1,4 +1,4 @@
-package com.islam97.android.apps.redditnews
+package com.islam97.android.apps.redditnews.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,7 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.islam97.android.apps.redditnews.ui.theme.RedditNewsTheme
+import com.islam97.android.apps.redditnews.presentation.ui.theme.RedditNewsTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,8 +32,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(modifier: Modifier = Modifier) {
     Text(
-        text = "Reddit News!",
-        modifier = modifier
+        text = "Reddit News!", modifier = modifier
     )
 }
 

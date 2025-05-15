@@ -41,12 +41,12 @@ android {
     productFlavors {
         create("develop") {
             dimension = "Environment"
-            buildConfigField("String", "BASE_URL", "\"http://example.com/\"")
+            buildConfigField("String", "BASE_URL", "\"https://www.reddit.com/\"")
         }
 
         create("production") {
             dimension = "Environment"
-            buildConfigField("String", "BASE_URL", "\"http://example.com/\"")
+            buildConfigField("String", "BASE_URL", "\"https://www.reddit.com/\"")
         }
     }
     compileOptions {
