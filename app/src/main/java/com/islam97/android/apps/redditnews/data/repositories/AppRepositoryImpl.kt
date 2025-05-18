@@ -1,5 +1,6 @@
 package com.islam97.android.apps.redditnews.data.repositories
 
+import com.islam97.android.apps.redditnews.data.datastore.NewsDataStoreManager
 import com.islam97.android.apps.redditnews.data.dto.toNewsModelList
 import com.islam97.android.apps.redditnews.data.remote.AppApi
 import com.islam97.android.apps.redditnews.data.room.AppDatabase
@@ -14,10 +15,25 @@ import javax.inject.Singleton
 
 @Singleton
 class AppRepositoryImpl
-@Inject constructor(private val appApi: AppApi, private val appDatabase: AppDatabase) :
-    BaseRepository(), AppRepository {
+@Inject constructor(
+    private val appApi: AppApi,
+    private val newsDataStoreManager: NewsDataStoreManager,
+    private val appDatabase: AppDatabase
+) : BaseRepository(), AppRepository {
     override suspend fun getNews(): Flow<Result> {
         return callApi(apiCall = { appApi.getNews() }) { it?.toNewsModelList() }
+    }
+
+    override suspend fun getAllNewsFromDataStore(): List<NewsItem> {
+        return newsDataStoreManager.getNews()
+    }
+
+    override suspend fun saveNewsInDataStore(news: List<NewsItem>) {
+        return newsDataStoreManager.saveNews(news)
+    }
+
+    override suspend fun deleteAllNewsFromDataStore() {
+        return newsDataStoreManager.deleteAllNews()
     }
 
     override suspend fun getAllNewsFromDatabase(): List<NewsItem> {

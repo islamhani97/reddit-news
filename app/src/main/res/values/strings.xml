@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Reddit News</string>
+    <!--Titles-->
+    <string name="title_news">Kotlin News</string>
     <!--Messages-->
     <string name="message_success">Success</string>
     <!--Errors-->
