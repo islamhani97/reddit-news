@@ -20,6 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import com.islam97.android.apps.redditnews.domain.models.NewsItem
+import com.islam97.android.apps.redditnews.domain.models.Thumbnail
 
 @Composable
 fun NewsItemView(
@@ -33,7 +34,7 @@ fun NewsItemView(
         Box(modifier = Modifier) {
             val imageModifier = Modifier
             // Consider aspect ratio according to the with and height if they exist
-            newsItem.thumbnail?.let { thumbnail ->
+            newsItem.thumbnail.let { thumbnail ->
                 thumbnail.width?.let { width ->
                     thumbnail.height?.let { height ->
                         imageModifier.aspectRatio(width.toFloat() / height.toFloat())
@@ -43,7 +44,7 @@ fun NewsItemView(
 
             AsyncImage(
                 modifier = imageModifier.fillMaxWidth(),
-                model = newsItem.thumbnail?.url,
+                model = newsItem.thumbnail.url,
                 contentDescription = null,
                 contentScale = ContentScale.FillWidth
             )
@@ -77,7 +78,10 @@ fun NewsItemView(
 @Composable
 fun PreviewNewsItemView() {
     NewsItemView(
-        modifier = Modifier,
-        newsItem = NewsItem(title = "News Title", thumbnail = null, url = "https://www.google.com")
+        modifier = Modifier, newsItem = NewsItem(
+            title = "News Title",
+            thumbnail = Thumbnail(url = null, width = null, height = null),
+            url = "https://www.google.com"
+        )
     )
 }

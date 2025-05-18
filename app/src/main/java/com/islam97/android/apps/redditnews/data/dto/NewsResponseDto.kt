@@ -77,7 +77,7 @@ private fun NewsItemDto.toNewsItemModel(): NewsItem {
                 )
             }
 
-            else -> null
+            else -> Thumbnail(url = null, width = null, height = null)
         }, url = data?.url ?: ""
     )
 }
