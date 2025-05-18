@@ -24,8 +24,9 @@ class GetNewsUseCase
                             }
 
                             is Result.Success<*> -> {
-                                appRepository.deleteAllNewsFromDatabase()
-                                appRepository.saveNewsInDataBase(it.data as List<NewsItem>)
+                                appRepository.deleteAllNewsFromDataStore()
+                                val news = it.data as List<NewsItem>
+                                appRepository.saveNewsInDataStore(news)
                                 emit(it)
                             }
 
@@ -40,7 +41,7 @@ class GetNewsUseCase
 
             } else {
                 emit(Result.Loading)
-                emit(Result.Success("", appRepository.getAllNewsFromDatabase()))
+                emit(Result.Success("", appRepository.getAllNewsFromDataStore()))
             }
         }
     }

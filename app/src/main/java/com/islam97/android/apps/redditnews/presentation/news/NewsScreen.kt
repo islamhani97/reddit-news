@@ -58,7 +58,7 @@ fun NewsScreen(navController: NavController) {
     Scaffold(
         modifier = Modifier.fillMaxSize(), topBar = {
             TopAppBar(title = {
-                Text(text = stringResource(R.string.app_name))
+                Text(text = stringResource(R.string.title_news))
             })
         }) { innerPadding ->
         ConstraintLayout(
